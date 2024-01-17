@@ -1,0 +1,1 @@
+const express = require("express") //Seria um framework como o objetivo de tratar as requisições e respostas do cliente-servidor
