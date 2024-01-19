@@ -1,0 +1,9 @@
+show dbs = Mostrar as databases criadas
+
+user nomedadatabase = Usado para acessar um database, e para criar um(usando o comando abaixo junto)
+
+db.createCollection("nomedacollection") = A collection seria o local onde será armazenado os documentos, comom uma coleção de documentos, primeiro use o comando acima e depois crie a collection
+
+//Como o mongoDb é um banco de dados não relacionavel o useja não trabalha em forma de tabela, não possui uma estrutura fixa criada antes, é desenvolvido no momento do desenvolvimento, as collections seriam as "tabelas" pq é onde os documentos ficarão armazenados e separados
+
+show collections = Usado para mostrar as collections criadas
