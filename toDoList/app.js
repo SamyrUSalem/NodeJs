@@ -1,5 +1,7 @@
 const express = require("express") //Seria um framework como o objetivo de tratar as requisições e respostas do cliente-servidor
 const checkListRouter = require("./src/routes/checklist")
+require("../config/database")
+
 
 const app = express() //Todos os métodos do express estarão no app
 
@@ -29,6 +31,6 @@ app.listen(3000, () => {
 //     res.json({ title: "Atividade", done: true })//todas as respostas serão convertidas para JSON, com isso poderia ser enviada para um app mobile ou outro tipo de sistema
 // })
 
-//Foi instalado o nodemon para ficar monitorando o arquvio e caso ocorra alguma mudança será atualizada automaticamente
+//Foi instalado o nodemon para ficar monitorando o arquvio e caso ocorra alguma mudança será atualizada automaticamente (npx nodemon app.js )
 
 

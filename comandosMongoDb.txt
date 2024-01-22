@@ -7,3 +7,23 @@ db.createCollection("nomedacollection") = A collection seria o local onde será 
 //Como o mongoDb é um banco de dados não relacionavel o useja não trabalha em forma de tabela, não possui uma estrutura fixa criada antes, é desenvolvido no momento do desenvolvimento, as collections seriam as "tabelas" pq é onde os documentos ficarão armazenados e separados
 
 show collections = Usado para mostrar as collections criadas
+
+db.nomedacolletion.isert({insiraOsDadosUsandoEstruturaJson}) = Dessa maneira, é possível adicionar dados dentro da collection
+
+db.nomedacollection.find() = Ele faz uma busca dentro da collection, é possível inserir algum parâmetro de busca para encontrar um elemento específico
+
+db.nomedacollection.update({identificador: "Elemento que vc quer procurar"}, {$set: {Atualizar: "Dessa forma, é possível atualizar algum elemento" }}) = Mas quando a atualização é em um campo específico é necessário utilizar o operador atômico $set
+
+db.nomedacollection.deleteOne({identificador: "Elemento que vc quer procurar"}) = Dessa formar, o elemento será deletado
+
+db.nomedacollection.insertMany([{name: "Teste", lista: ObejectId(''códigodoid")}, {Inserir: Com o Many é possíve adicionar mais um arquivo"}]) = Com o ObjectId("") é possível efetuar uma referência ou seja, esse id referencia outra collection e dessa forma ocorre uma associação entre elas
+
+db.checklist.aggregate({$lookup:{from:"nomedoarquivo",localField:"_id",foreignField:"nomedocampodeassociação",as:"tasks"}}).pretty() = O aggregate irá realizar a junção dos arquivos, o operador lookup esta realizando uma pesquisa de todos os arquivos q estão referenciando o id do q esta no checklist e juntando todos esses docs, o from seria o nome do doc q esta sendo feito a pesquisa, o localField é oq foi referenciado(id), foreignField seria o nome do campo q esta fazendo a associação por exemplo a "lista" q foi usado no código acima e o pretty faz com que o resultado desse código seja mais legível
+
+db.task.find({$and:[{name:"atributo q esta sendo pesquisado"},{done:false}]}) = Com o operador $and é possível realizar uma busca mais especifica, nesse caso estou querendo o arquivo q possui o atributo name com aquele conteúdo e o done: False
+
+db.task.find({$or:[{name:"atributo q esta sendo pesquisado"},{done:false}]}) = O operador $or é bem parecido com o $and mas com ele n é necessário q todos os atributos  q estão sendo pesquisados sejam verdadeios, se o arquivo tiver um ou outro será mostrado no resultado
+
+db.task.find({checklistId:{$exists:true}}) = O operador $exists esta procurando os arquivos que possuem o atributo checklistId, caso fosse false seria aqueles q não possuem
+
+db.nomedacollection.drop() = Esse comando apaga a collection q esta sendo referenciada
