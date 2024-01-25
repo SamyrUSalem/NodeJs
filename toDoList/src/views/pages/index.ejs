@@ -1,0 +1,18 @@
+<%- include("../layouts/header", {title:"ToDoList" }) %>
+    <!--Dessa maneira é possível inserir um partial, q seria algo q facilita a organização do cógido, ele faz com que separamos o html em varios arquivos separados para q possamos junta-los, auxiliando na reutilização dos códigos-->
+    <!--Para fazer com que uma partial fique mais dinâmina é possível enviar dados para o ejs, é só inserir um objeto e adicionar uma variavel com o conteúdo q deseja, a mesma cai esta acessivel no arquivo header, devido a isso é possível usar o mesmo bloco de código, mas de diferente forma-->
+    <%- include("../layouts/menu") %>
+        <section class="section hero is-link is-fullheight-with-navbar">
+            <div class="hero-body has-text-centered">
+                <div class="container">
+                    <h1 class="title">
+                        TODO-List
+                    </h1>
+                    <h2 class="subtitle">
+                        Geranciando nossas atividades diárias =D
+                    </h2>
+                    <a href="/checklist" class="button is-light is-medium">Ir para Listas de Atividades!</a>
+                </div>
+            </div>
+        </section>
+        <%- include("../layouts/footer") %>

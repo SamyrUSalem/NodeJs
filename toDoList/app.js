@@ -1,13 +1,22 @@
 const express = require("express") //Seria um framework como o objetivo de tratar as requisições e respostas do cliente-servidor
 const checkListRouter = require("./src/routes/checklist")
+const rootRouter = require("./src/routes/index")
+const path = require("path")
 require("../config/database")
 
 
 const app = express() //Todos os métodos do express estarão no app
 
+app.use(express.static(path.join(__dirname, "public"))) //Dessa forma, estou dizendo que os arquivos estaticos vão ficar na pasta public
+
 app.use(express.json()) // Com esse middleware, é feita uma verificação se existe algum JSON na requisição e caso aja ele será processado e enviado pelo boy da req
 
 app.use("/checklist", checkListRouter) //Esse primeiro parâmetro quer dizer que todas as rotas q estãno checkListRouter são derivadas da rota /checklist
+app.use("/", rootRouter)
+
+app.set("views", path.join(__dirname, "src/views")) //Estou dizendo o caminho onde esta as views
+
+app.set("view engine", "ejs") //Estou dizendo q as view é o EJS q foi instalado
 
 app.listen(3000, () => {
     console.log("Deu tudo certo!")

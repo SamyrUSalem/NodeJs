@@ -3,14 +3,13 @@ const express = require("express")
 const router = express.Router() //O Router seria uma função do express para a criação de rotas
 
 const Checklist = require("../models/checklist")
-const checklist = require("../models/checklist")
 
 router.get("/", async (req, res) => {
     try {
         let checklist = await Checklist.find({}) //Dessa forma, iremos devolver o checklist e as task que foram criadas
-        res.status(200).json(checklist)
+        res.status(200).render("checklists/index", { checklist: checklist }) //Estou pedindo para renderizar oq esta nesse caminho, e enviei uma variavel q possui a listagem do checklist
     } catch (error) {
-        res.status(500).json(error)
+        res.status(200).render("pages/error", { error: "Error de exibição" })
     }
 })
 
@@ -28,9 +27,9 @@ router.post("/", async (req, res) => { //Assim seria uma rota do tipo Post(envio
 router.get("/:id", async (req, res) => {//O ":id" quer dizer q essa rota esta esperando um parâmetro id que sera enviado pelo usuário
     try {
         let checklist = await Checklist.findById(req.params.id)
-        res.status(200).json(checklist)
+        res.status(200).render("checklists/show", { checklist: checklist })
     } catch (error) {
-        res.status(422).json(error)
+        res.status(200).render("pages/error", { error: "Error a lista de Atividades" })
     }
 
 
