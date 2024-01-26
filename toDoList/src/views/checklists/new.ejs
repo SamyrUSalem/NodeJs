@@ -1,0 +1,14 @@
+<%- include("../layouts/header", {title:"CheckList" }) %>
+
+    <%- include("../layouts/menu") %>
+
+        <section class="section">
+            <div class="container">
+                <h1 class="title size-4">Nova Lista</h1>
+
+                <%- include("form", {url:"/checklist?_method=post", checklist:checklist}) %>
+                    <!--Usando o method-override é possível passar o método da requisição do post, pela própria URL-->
+            </div>
+        </section>
+
+        <%- include("../layouts/footer") %>

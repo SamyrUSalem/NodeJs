@@ -1,7 +1,9 @@
 const express = require("express") //Seria um framework como o objetivo de tratar as requisições e respostas do cliente-servidor
 const checkListRouter = require("./src/routes/checklist")
+const taskRouter = require("./src/routes/task")
 const rootRouter = require("./src/routes/index")
 const path = require("path")
+const methodOverride = require("method-override") //Método usado para podermos trabalhar com o Put e Delete na requisição dos forms
 require("../config/database")
 
 
@@ -11,7 +13,12 @@ app.use(express.static(path.join(__dirname, "public"))) //Dessa forma, estou diz
 
 app.use(express.json()) // Com esse middleware, é feita uma verificação se existe algum JSON na requisição e caso aja ele será processado e enviado pelo boy da req
 
+app.use(express.urlencoded({ extended: true })) //Esse middleware irá fazer a requisição do formulario, faz com que os valores q virem da url(do forms) estejam dispobiveis
+
+app.use(methodOverride("_method", { methods: ["POST", "GET"] })) //Iniciando o method override, o segundo parâmetro estou dizendo para o mesmo atuar no post e get (seria para sobrescrever esses dois valores de acordo com aquele q esta na url)
+
 app.use("/checklist", checkListRouter) //Esse primeiro parâmetro quer dizer que todas as rotas q estãno checkListRouter são derivadas da rota /checklist
+app.use("/checklist", taskRouter.checkDependent) //Esse middleware ira analisar a mesma url q o de cima
 app.use("/", rootRouter)
 
 app.set("views", path.join(__dirname, "src/views")) //Estou dizendo o caminho onde esta as views
