@@ -40,7 +40,7 @@ router.post("/", async (req, res) => { //Assim seria uma rota do tipo Post(envio
         await checklist.save() //Estou criando uma checklist de acordo com o model 
         res.redirect("/checklist") //Estou redirecionando para a tela de checklist
     } catch (error) {
-        res.status(422).render("checklist/new", { checklist: { ...checklist, error } }) //Dessa maneira, estou devolvendo o checklist q foi passado junto com o error q diz aonde ocorrei
+        res.status(422).render("checklist/new", { checklist: { ...checklist, error } }) //Dessa maneira, estou devolvendo o checklist q foi passado junto com o error q diz aonde ocorreu
     }
 
 })
