@@ -19,6 +19,7 @@ app.use(methodOverride("_method", { methods: ["POST", "GET"] })) //Iniciando o m
 
 app.use("/checklist", checkListRouter) //Esse primeiro parâmetro quer dizer que todas as rotas q estãno checkListRouter são derivadas da rota /checklist
 app.use("/checklist", taskRouter.checkDependent) //Esse middleware ira analisar a mesma url q o de cima
+app.use("/tasks", taskRouter.simpleRouter)
 app.use("/", rootRouter)
 
 app.set("views", path.join(__dirname, "src/views")) //Estou dizendo o caminho onde esta as views
